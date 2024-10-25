@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <title>Field</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20,400,1,0&icon_names=visibility_off" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20,400,1,0&icon_names=lock" />
+</head>
+<body>
+    <div style="display: flex; gap: 8px; align-items: baseline;">
+        <div style="display: block; width: 16px; height: 16px; background-color: green;"></div>
+        <h2>Income</h2>
+    </div>
+
+    <div class="table">
+        <div class="row" id="rowToHide">
+            <div class="cell date-range">
+                <input class="field date" type="date" value="2024-10-24" />
+            </div>
+            <div class="cell name">
+                <input class="field text" type="string" value="Salary" />
+            </div>
+            <div class="cell amount">
+                <input class="field text" type="number" value="140000" />
+            </div>
+            <div class="cell frequency">
+                <select class="field select" name="pets" id="pet-select">
+                    <option value="hamster">lump</option>
+                    <option value="dog" selected >per year</option>
+                    <option value="cat">per month</option>
+                </select>
+            </div>
+            <div class="button" id="visibility">
+                <img class="onlyOnHover" id="visibilityIcon" src="visibility_off.png"/>
+            </div>
+            <div class="button" id="overflowMenu">
+                <img class="onlyOnHover" src="more_vert.png"/>
+            </div>
+        </div>
+        <div class="row">
+            <div class="cell date-range">
+                <input class="field date" type="date" value="2032-02-01" />
+            </div>
+            <div class="cell name">
+                <input class="field text" type="string" value="Sell car" />
+            </div>
+            <div class="cell amount">
+                <input class="field text" type="number" value="140000" />
+            </div>
+            <div class="cell frequency">
+                <select class="field select" name="pets" id="pet-select">
+                    <option value="hamster" selected>lump</option>
+                    <option value="dog">per year</option>
+                    <option value="cat">per month</option>
+                </select>
+            </div>
+            <div class="button" id="visibility">
+                <img class="onlyOnHover" id="visibilityIcon" src="visibility_off.png"/>
+            </div>
+            <div class="button" id="overflowMenu">
+                <img class="onlyOnHover" src="more_vert.png"/>
+            </div>
+        </div>
+
+    </div>
+</body>
+
+<style>
+    .hidden {
+        display: none
+    }
+    .disabled {
+        opacity: 0.4
+    }
+    body {
+        padding: 3% 6%;
+        font-family: Gerbera;
+        font-size: 14px;
+        line-height: 20px;
+    }
+    .table {
+        flex-direction: column;
+        width: 480px;
+    }
+    input, select {
+        font-family: Gerbera !important;
+        border-color: transparent;
+        background-color: transparent;
+
+        &:hover {
+            border-color: #0000000a;
+            background-color: #f0f0f0;
+        }
+    }
+    input.date {
+        padding: 3px 4px 1px;
+    }
+    input.text {
+        padding: 4px 4px 2px;
+    }
+    select.select {
+        padding: 5.5px 4px 5px;
+    }
+    .table {
+        display: flex
+    }
+    .row {
+        display: flex;
+        gap: 8px
+    }
+    input, select {
+        width: -webkit-fill-available;
+    }
+    .cell {
+        width: 120px;
+        &.date-range {
+            width: 108px;
+        }
+        &.amount {
+            width: 80px;
+        }
+        &.frequency {
+            width: 80px;
+        }
+    }
+    .row {
+        padding: 4px 0;
+        background: #fff;
+        border-bottom: 1px solid #e5e5e5;
+
+        &:hover {
+            background: #fafafa;
+        }
+    }
+    .cell:hover button {
+        visibility: visible;
+    }
+    .actions {
+        display: flex;
+        align-items: center;
+        visibility: hidden;
+    }
+    img {
+        width: 16px;
+        height: 16px;
+    }
+    .button {
+        border-radius: 20px;
+        padding: 4px;
+        width: 27.5px;
+        height: 27.5px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        box-sizing: border-box;
+        cursor: pointer;
+        &:hover {
+            background-color: #0000000a;
+        }
+    }
+    .row:hover .actions {
+        visibility: visible;
+    }
+    .onlyOnHover {
+        visibility: hidden;
+    }
+    .row:hover .onlyOnHover {
+        visibility: visible;
+    }
+
+</style>
+
+<script>
+    var visibilityButton = document.getElementById('visibility')
+    var visibilityIcon = document.getElementById('visibilityIcon')
+    var rowToHide = document.getElementById('rowToHide')
+
+    visibilityButton.addEventListener('click',function(){
+        if (visibilityIcon.className == "onlyOnHover") {
+            visibilityIcon.className = ""
+            rowToHide.className = "row disabled"
+        } else {
+            visibilityIcon.className = "onlyOnHover"
+            rowToHide.className = "row"
+        }
+    })
+</script>
+
+</html>
