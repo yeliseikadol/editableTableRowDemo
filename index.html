@@ -199,4 +199,12 @@
     })
 </script>
 
+   <script>
+      document.getElementById('incomeAmount').addEventListener('blur', function(e) {
+  gtag('event', 'field_submitted', {
+    field_name: 'incomeAmount'
+  });
+});
+   </script>
+
 </html>
